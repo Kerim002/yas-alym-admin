@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "@/shared/ui/table";
 import { Edit, Trash } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const fakeData = [
@@ -42,36 +43,54 @@ const fakeData = [
 ];
 
 const CoursesTable = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/contact");
+  };
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>No</TableHead>
-          <TableHead>Name</TableHead>
-          <TableHead>Created at</TableHead>
-          <TableHead>Updated at</TableHead>
-          <TableHead className="w-20 text-right">Action</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {fakeData.map((item, index) => (
-          <TableRow key={item.pk}>
-            <TableCell>{index + 1}</TableCell>
-            <TableCell>{item.name}</TableCell>
-            <TableCell>{item.created_at}</TableCell>
-            <TableCell>{item.updated_at}</TableCell>
-            <TableCell className="flex gap-2 justify-end">
-              <Button size="sm">
-                <Edit />
-              </Button>
-              <Button danger="danger" size="sm">
-                <Trash />
-              </Button>
-            </TableCell>
+    <div className="p-4">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>No</TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead>Created at</TableHead>
+            <TableHead>Updated at</TableHead>
+            <TableHead className="w-20 text-right">Action</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {fakeData.map((item, index) => (
+            <TableRow onClick={handleClick} key={item.pk}>
+              <TableCell>{index + 1}</TableCell>
+              <TableCell>{item.name}</TableCell>
+              <TableCell>{item.created_at}</TableCell>
+              <TableCell>{item.updated_at}</TableCell>
+              <TableCell className="flex gap-2 justify-end">
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                  size="sm"
+                >
+                  <Edit />
+                </Button>
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                  danger="danger"
+                  size="sm"
+                >
+                  <Trash />
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 };
 
