@@ -4,6 +4,7 @@ import { API_URL } from "../config";
 import { tokenService } from "../service/auth-token.service";
 import { errorCatch } from "./error";
 import { refreshService } from "../service/refresh.service";
+import { getCookie } from "cookies-next/client";
 
 const options: CreateAxiosDefaults = {
   baseURL: API_URL,
@@ -26,14 +27,10 @@ axiosClassic.interceptors.request.use((config) => {
 const axiosWithAuth = axios.create(options);
 
 axiosWithAuth.interceptors.request.use((config) => {
-  const accessToken = tokenService.getAccessToken();
-  if (config?.headers && accessToken) {
-    config.headers.Authorization = `${accessToken}`;
+  if (config?.headers && getCookie("accessToken")) {
+    config.headers.Authorization = getCookie("accessToken");
   }
-  const language =
-    JSON.parse(localStorage.getItem("language") || "{}").state?.language ||
-    "en";
-  config.headers["accept-language"] = language;
+
   return config;
 });
 
