@@ -1,7 +1,8 @@
+import { SectionTable } from "@/entity/sections";
 import React from "react";
 
 const Sections = () => {
-  return <div>Sections</div>;
+  return <SectionTable />;
 };
 
 export default Sections;

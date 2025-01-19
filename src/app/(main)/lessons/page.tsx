@@ -1,7 +1,8 @@
+import LessonTable from "@/entity/lessons/ui/lesson-table";
 import React from "react";
 
 const Lessons = () => {
-  return <div>Lessons</div>;
+  return <LessonTable />;
 };
 
 export default Lessons;

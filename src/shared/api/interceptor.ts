@@ -28,7 +28,7 @@ const axiosWithAuth = axios.create(options);
 axiosWithAuth.interceptors.request.use((config) => {
   const accessToken = tokenService.getAccessToken();
   if (config?.headers && accessToken) {
-    config.headers.Authorization = `${accessToken}`;
+    config.headers.Authorization = `Barrier ${accessToken}`;
   }
   const language =
     JSON.parse(localStorage.getItem("language") || "{}").state?.language ||

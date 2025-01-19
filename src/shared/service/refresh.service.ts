@@ -1,4 +1,4 @@
-import { axiosClassic } from "../api/interceptors";
+import { axiosClassic } from "../api/interceptor";
 import { tokenService } from "./auth-token.service";
 
 export const refreshService = {

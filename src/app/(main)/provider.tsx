@@ -7,7 +7,7 @@ export const SideProvider = ({ children }: PropsWithChildren) => {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <div className="h-screen  w-full p-8 flex relative">{children}</div>
+        <div className="h-screen  w-full p-5 flex relative">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

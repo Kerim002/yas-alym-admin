@@ -4,3 +4,8 @@ type LanguageSchema = {
   full: LanguageFullVariant;
   short: LanguageShortVariant;
 };
+
+type TokenSchema = {
+  refresh_token: string;
+  token: string;
+};

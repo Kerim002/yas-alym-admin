@@ -1,7 +1,8 @@
+import { UnitsTable } from "@/entity/units";
 import React from "react";
 
 const Units = () => {
-  return <div>Units</div>;
+  return <UnitsTable />;
 };
 
 export default Units;

@@ -2,4 +2,13 @@ import { FAQData } from "./faq";
 import { languages } from "./language";
 import { mediaData } from "./media";
 import { settingsSidebarData, sidebarData } from "./sidebar";
-export { languages, FAQData, mediaData, settingsSidebarData, sidebarData };
+import { fakeTable } from "./unit";
+
+export {
+  fakeTable,
+  languages,
+  FAQData,
+  mediaData,
+  settingsSidebarData,
+  sidebarData,
+};
