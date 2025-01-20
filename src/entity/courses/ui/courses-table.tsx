@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/ui/table";
+import { CourseRow } from "@/widget";
 import { Edit, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -43,11 +44,6 @@ const fakeData = [
 ];
 
 const CoursesTable = () => {
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push("/contact");
-  };
   return (
     <div className="p-4">
       <Table>
@@ -62,31 +58,7 @@ const CoursesTable = () => {
         </TableHeader>
         <TableBody>
           {fakeData.map((item, index) => (
-            <TableRow onClick={handleClick} key={item.pk}>
-              <TableCell>{index + 1}</TableCell>
-              <TableCell>{item.name}</TableCell>
-              <TableCell>{item.created_at}</TableCell>
-              <TableCell>{item.updated_at}</TableCell>
-              <TableCell className="flex gap-2 justify-end">
-                <Button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                  size="sm"
-                >
-                  <Edit />
-                </Button>
-                <Button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                  danger="danger"
-                  size="sm"
-                >
-                  <Trash />
-                </Button>
-              </TableCell>
-            </TableRow>
+            <CourseRow key={item.id} index={index} item={item} />
           ))}
         </TableBody>
       </Table>
