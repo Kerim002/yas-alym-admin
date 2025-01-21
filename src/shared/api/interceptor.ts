@@ -25,12 +25,11 @@ axiosClassic.interceptors.request.use((config) => {
 });
 
 const axiosWithAuth = axios.create(options);
-
 axiosWithAuth.interceptors.request.use((config) => {
   if (config?.headers && getCookie("accessToken")) {
-    config.headers.Authorization = getCookie("accessToken");
+    config.headers.Authorization = `Bearer ${getCookie("accessToken")}`;
   }
-
+  config.withCredentials = true;
   return config;
 });
 

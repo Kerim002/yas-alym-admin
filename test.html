@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function test() {
+        const res = await fetch(
+          "http://95.85.125.54:2025/course/api/v0/courses",
+          {
+            method: "GET",
+            credentials: "include",
+            headers: {
+              Authorization:
+                "Bearer eydzdWInOiAnZjQ4NzhmNjctYzc2Ni00NDY3LWEyN2ItYTIxZTViMDUwMTJlJywgJ3VzZXJuYW1lJzogJ3N0cmluZycsICdjb3Vyc2VfaWQnOiAnTm9uZSd9",
+            },
+          }
+        ).then((r) => r.json());
+        return res;
+      }
+      test();
+    </script>
+  </body>
+</html>
