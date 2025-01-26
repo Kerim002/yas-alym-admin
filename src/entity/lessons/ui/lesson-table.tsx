@@ -1,3 +1,5 @@
+"use client";
+import { QueryEditBtn } from "@/features";
 import { Button } from "@/shared/ui/button";
 import {
   Table,
@@ -8,8 +10,12 @@ import {
   TableRow,
 } from "@/shared/ui/table";
 import { Edit, Trash } from "lucide-react";
+import dynamic from "next/dynamic";
 import React from "react";
-
+const DialogWrapper = dynamic(() =>
+  import("@/widget").then((mod) => mod.DialogWrapper)
+);
+const LessonDialog = dynamic(() => import("./lesson-dialog"));
 const fakeData = [
   {
     id: "006ed04c-704e-4012-979b-912b58d7155b",
@@ -87,35 +93,43 @@ const fakeData = [
 
 const LessonTable = () => {
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>No</TableHead>
-          <TableHead>Name</TableHead>
-          <TableHead>Display order</TableHead>
-          <TableHead>Type</TableHead>
-          <TableHead className="w-20 text-end">Action</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {fakeData.map((item, index) => (
-          <TableRow key={item.id}>
-            <TableCell>{index + 1}</TableCell>
-            <TableCell>{item.name}</TableCell>
-            <TableCell>{item.display_order}</TableCell>
-            <TableCell>{item.type}</TableCell>
-            <TableCell className="flex gap-2 justify-end">
-              <Button size="sm">
-                <Edit />
-              </Button>
-              <Button danger="danger" size="sm">
-                <Trash />
-              </Button>
-            </TableCell>
+    <div className="w-full">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>No</TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead>Display order</TableHead>
+            <TableHead>Type</TableHead>
+            <TableHead className="w-20 text-end">Action</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {fakeData.map((item, index) => (
+            <TableRow key={item.id}>
+              <TableCell>{index + 1}</TableCell>
+              <TableCell>{item.name}</TableCell>
+              <TableCell>{item.display_order}</TableCell>
+              <TableCell>{item.type}</TableCell>
+              <TableCell className="flex gap-2 justify-end">
+                <QueryEditBtn
+                  queries={[
+                    { key: "isDialog", value: "true" },
+                    { key: "id", value: item.id },
+                  ]}
+                />
+                <Button danger="danger" size="sm">
+                  <Trash />
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <DialogWrapper>
+        <LessonDialog />
+      </DialogWrapper>
+    </div>
   );
 };
 

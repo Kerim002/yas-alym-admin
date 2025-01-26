@@ -22,11 +22,6 @@ export const sidebarData = {
   ],
   navMain: [
     {
-      title: "Courses",
-      url: "/",
-      icon: LayoutDashboardIcon,
-    },
-    {
       title: "Sections",
       url: "/sections",
       icon: FileVideo2,

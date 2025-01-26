@@ -8,6 +8,12 @@ import {
 import { CourseRow } from "@/widget";
 import React from "react";
 import useCourse from "../api/useCourse";
+import dynamic from "next/dynamic";
+import { QueryAddBtn } from "@/features";
+const DialogWrapper = dynamic(() =>
+  import("@/widget").then((mod) => mod.DialogWrapper)
+);
+const CourseDialog = dynamic(() => import("./course-dialog"));
 
 const CoursesTable = () => {
   const { data } = useCourse();
@@ -16,6 +22,11 @@ const CoursesTable = () => {
   }
   return (
     <div className="p-4">
+      <div className="flex justify-end w-full">
+        <QueryAddBtn queries={[{ key: "isDialog", value: "true" }]}>
+          Add
+        </QueryAddBtn>
+      </div>
       <Table>
         <TableHeader>
           <TableRow>
@@ -32,6 +43,10 @@ const CoursesTable = () => {
           ))}
         </TableBody>
       </Table>
+
+      <DialogWrapper>
+        <CourseDialog />
+      </DialogWrapper>
     </div>
   );
 };

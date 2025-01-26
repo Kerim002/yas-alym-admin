@@ -9,6 +9,10 @@ class CoursesService {
     );
     return res.data;
   }
+
+  async addCourse(body: AddCourseRequest) {
+    await axiosWithAuth.post(`${this.url}/courses`, body);
+  }
 }
 
 export const coursesService = new CoursesService();

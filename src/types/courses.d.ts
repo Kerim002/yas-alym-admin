@@ -7,3 +7,7 @@ interface CourseItemSchema {
 }
 
 type CourseListResponse = CourseItemSchema[];
+
+interface AddCourseRequest {
+  name: string;
+}

@@ -27,7 +27,6 @@ const useCourse = () => {
   return useQuery({
     queryKey: ["course", "list"],
     queryFn: () => coursesService.getCourses(),
-    initialData,
   });
 };
 

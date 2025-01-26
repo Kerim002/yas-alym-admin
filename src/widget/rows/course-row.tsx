@@ -1,3 +1,4 @@
+import { QueryEditBtn } from "@/features";
 import { Button } from "@/shared/ui/button";
 import { TableCell, TableRow } from "@/shared/ui/table";
 import { Edit, Trash } from "lucide-react";
@@ -11,7 +12,6 @@ type Props = {
 
 const CourseRow = ({ item, index }: Props) => {
   const router = useRouter();
-
   const handleClick = (id: string) => {
     router.push("/sections");
     sessionStorage.setItem("courseid", id);
@@ -23,14 +23,12 @@ const CourseRow = ({ item, index }: Props) => {
       <TableCell>{item.created_at}</TableCell>
       <TableCell>{item.updated_at}</TableCell>
       <TableCell className="flex gap-2 justify-end">
-        <Button
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-          size="sm"
-        >
-          <Edit />
-        </Button>
+        <QueryEditBtn
+          queries={[
+            { key: "isDialog", value: "true" },
+            { key: "id", value: item.id },
+          ]}
+        />
         <Button
           onClick={(e) => {
             e.stopPropagation();

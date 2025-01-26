@@ -1,3 +1,3 @@
 import CourseRow from "./rows/course-row";
-
-export { CourseRow };
+import DialogWrapper from "./dialog/DialogWrapper";
+export { CourseRow, DialogWrapper };

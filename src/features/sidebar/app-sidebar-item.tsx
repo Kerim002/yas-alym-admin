@@ -1,16 +1,20 @@
+"use client";
 import { SidebarMenuButton, SidebarMenuItem } from "@/shared/ui/sidebar";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const AppSidebarItem = (item: SidebarItemSchema) => {
+  const router = useRouter();
+
+  const handleNavigate = () => {
+    router.push(item.url);
+  };
   return (
-    <SidebarMenuItem key={item.title}>
-      <Link href={item.url}>
-        <SidebarMenuButton tooltip={item.title}>
-          {item.icon && <item.icon />}
-          <span>{item.title}</span>
-        </SidebarMenuButton>
-      </Link>
+    <SidebarMenuItem>
+      <SidebarMenuButton onClick={handleNavigate} tooltip={item.title}>
+        {item.icon && <item.icon />}
+        <span>{item.title}</span>
+      </SidebarMenuButton>
     </SidebarMenuItem>
   );
 };

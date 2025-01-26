@@ -9,6 +9,10 @@ class SectionService {
     );
     return res.data;
   }
+
+  async addSection(body: SectionMutation) {
+    await axiosWithAuth.post(`${this.url}/sections`, body);
+  }
 }
 
 export const sectionService = new SectionService();

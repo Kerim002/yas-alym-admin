@@ -10,3 +10,9 @@ interface SectionItemSchema {
 }
 
 type SectionListResponse = SectionItemSchema[];
+
+interface SectionMutation {
+  course_id: string;
+  name: string;
+  display_order: number;
+}
