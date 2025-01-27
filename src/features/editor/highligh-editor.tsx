@@ -10,9 +10,9 @@ const HighlighEditor = ({ editor }: { editor: Editor | null }) => {
   return (
     <div className="flex justify-center items-center relative">
       <Toggle
-        onPressedChange={() =>
-          editor.chain().focus().toggleHighlight({ color }).run()
-        }
+        // onPressedChange={() =>
+        //   editor.chain().focus().toggleHighlight({ color }).run()
+        // }
         pressed={editor.isActive("highlight")}
         className="flex flex-col "
       >

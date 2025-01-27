@@ -9,14 +9,10 @@ import {
 } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
 import React from "react";
-import { Control, useForm } from "react-hook-form";
-
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import TestInput from "./test-input";
-type ControlForForm = Control<{
-  unitname: string;
-  displaynumber: string;
-}>;
+
 const formSchema = z.object({
   unitname: z.string().min(2, {
     message: "Course name must be at least 2 characters.",
@@ -28,10 +24,11 @@ const formSchema = z.object({
 export type DialogSchema = z.infer<typeof formSchema>;
 const UnitsDialog = () => {
   const form = useForm<z.infer<typeof formSchema>>({
-    // resolver: zodResolver(formSchema),
-    // defaultValues: {
-    //   username: "",
-    // },
+    resolver: zodResolver(formSchema), // Use schema for validation
+    defaultValues: {
+      unitname: "",
+      displaynumber: "",
+    },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {

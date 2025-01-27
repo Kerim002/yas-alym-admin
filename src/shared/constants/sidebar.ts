@@ -1,7 +1,6 @@
 import {
   FileVideo2,
   GalleryVerticalEnd,
-  LayoutDashboardIcon,
   MapPin,
   Settings,
   Settings2Icon,
@@ -37,8 +36,8 @@ export const sidebarData = {
       icon: Settings,
     },
     {
-      title: "Exersises",
-      url: "/exersises",
+      title: "Exercises",
+      url: "/exercises",
       icon: Settings,
     },
   ],

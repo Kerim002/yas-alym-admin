@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Toggle } from "@/shared/ui/toggle";
 import { type Editor } from "@tiptap/react";
-import { EllipsisVertical, Highlighter } from "lucide-react";
+import { EllipsisVertical } from "lucide-react";
 const ColorEditor = ({ editor }: { editor: Editor | null }) => {
   const [color, setColor] = useState<string>("#ffff00");
   if (!editor) {
@@ -10,7 +10,7 @@ const ColorEditor = ({ editor }: { editor: Editor | null }) => {
   return (
     <div className="flex justify-center items-center relative">
       <Toggle
-        onPressedChange={() => editor.chain().focus().setColor(color).run()}
+        // onPressedChange={() => editor.chain().focus().setColor(color).run()}
         pressed={editor.isActive("highlight")}
         className="flex flex-col "
       >

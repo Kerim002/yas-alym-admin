@@ -9,10 +9,8 @@ import {
   FormMessage,
 } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
-import { useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-
+import { zodResolver } from "@hookform/resolvers/zod"; // Import zodResolver
 import { z } from "zod";
 
 const formSchema = z.object({
@@ -24,14 +22,15 @@ const formSchema = z.object({
 const LessonDialog = () => {
   const { deleteQuery } = useQueryParam();
   const form = useForm<z.infer<typeof formSchema>>({
-    // resolver: zodResolver(formSchema),
-    // defaultValues: {
-    //   username: "",
-    // },
+    resolver: zodResolver(formSchema), // Use zodResolver here!
+    defaultValues: {
+      lessonname: "", // Initialize default values
+    },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     deleteQuery(["isDialog", "id"]);
+    console.log(values);
   }
 
   return (
@@ -46,7 +45,6 @@ const LessonDialog = () => {
               <FormControl>
                 <Input placeholder="Lesson name" {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}

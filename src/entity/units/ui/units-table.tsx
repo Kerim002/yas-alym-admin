@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/shared/ui/table";
 import { Trash } from "lucide-react";
-import React from "react";
+import React, { Suspense } from "react";
 import useUnitQuery from "../api/useUnitQuery";
 import { DialogWrapper } from "@/widget";
 import UnitsDialog from "./units-dialog";
@@ -18,6 +18,7 @@ import { QueryEditBtn } from "@/features";
 
 const UnitsTable = () => {
   const { data } = useUnitQuery();
+  console.log(data);
   return (
     <div className="w-full">
       <Table>
@@ -54,9 +55,11 @@ const UnitsTable = () => {
           ))}
         </TableBody>
       </Table>
-      <DialogWrapper>
-        <UnitsDialog />
-      </DialogWrapper>
+      <Suspense>
+        <DialogWrapper>
+          <UnitsDialog />
+        </DialogWrapper>
+      </Suspense>
     </div>
   );
 };

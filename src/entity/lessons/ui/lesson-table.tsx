@@ -9,9 +9,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/ui/table";
-import { Edit, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { Suspense } from "react";
 const DialogWrapper = dynamic(() =>
   import("@/widget").then((mod) => mod.DialogWrapper)
 );
@@ -126,9 +126,11 @@ const LessonTable = () => {
           ))}
         </TableBody>
       </Table>
-      <DialogWrapper>
-        <LessonDialog />
-      </DialogWrapper>
+      <Suspense>
+        <DialogWrapper>
+          <LessonDialog />
+        </DialogWrapper>
+      </Suspense>
     </div>
   );
 };

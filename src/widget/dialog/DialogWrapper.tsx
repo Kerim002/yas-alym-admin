@@ -1,13 +1,6 @@
 "use client";
 import useQueryParam from "@/shared/hook/useQueryParam";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/shared/ui/dialog";
-import { useQueries } from "@tanstack/react-query";
+import { Dialog, DialogContent, DialogTitle } from "@/shared/ui/dialog";
 import React, { ReactNode } from "react";
 
 type Props = {

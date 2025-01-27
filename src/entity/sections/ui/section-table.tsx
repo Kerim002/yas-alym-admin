@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/shared/ui/table";
 import { Trash } from "lucide-react";
-import React from "react";
+import React, { Suspense } from "react";
 import useSectionListQuery from "../api/useSectionListQuery";
 import { DialogWrapper } from "@/widget";
 import SectionDialog from "./section-dialog";
@@ -62,9 +62,11 @@ const SectionTable = () => {
           ))}
         </TableBody>
       </Table>
-      <DialogWrapper>
-        <SectionDialog />
-      </DialogWrapper>
+      <Suspense>
+        <DialogWrapper>
+          <SectionDialog />
+        </DialogWrapper>
+      </Suspense>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { QueryEditBtn } from "@/features";
 import { Button } from "@/shared/ui/button";
 import { TableCell, TableRow } from "@/shared/ui/table";
-import { Edit, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 

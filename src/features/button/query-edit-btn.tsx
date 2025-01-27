@@ -1,7 +1,7 @@
 import useQueryParam from "@/shared/hook/useQueryParam";
 import { Button } from "@/shared/ui/button";
 import { EditIcon } from "lucide-react";
-import { MouseEvent, Suspense } from "react";
+import { Suspense } from "react";
 
 type Props = {
   queries: {

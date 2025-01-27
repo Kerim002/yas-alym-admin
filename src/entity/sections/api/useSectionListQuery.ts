@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import { sectionService } from "./section.service";
 const initialData = [
   {

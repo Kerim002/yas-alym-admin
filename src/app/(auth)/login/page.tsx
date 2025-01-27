@@ -13,7 +13,6 @@ import { Input } from "@/shared/ui/input";
 import { Label } from "@/shared/ui/label";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { getCookie } from "cookies-next/client";
 const Login = () => {
   const { register, handleSubmit } = useForm<LoginPayload>();
   return (

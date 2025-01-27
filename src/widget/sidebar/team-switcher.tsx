@@ -9,9 +9,7 @@ import {
   useSidebar,
 } from "@/shared/ui/sidebar";
 
-export function TeamSwitcher({
-  teams,
-}: {
+export function TeamSwitcher({}: {
   teams: {
     name: string;
     logo: React.ElementType;
